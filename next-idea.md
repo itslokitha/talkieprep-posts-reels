@@ -12,7 +12,7 @@
 <!-- Day 1 fills this in. -->
 _Generated 2026-11-12. Idea 1 is the recommended pick._
 
-## 1. You don't run out of ideas. You run out of structure. ⭐ RECOMMENDED
+### 1. You don't run out of ideas. You run out of structure. ⭐ RECOMMENDED
 
 - **Exam(s) and language:** IELTS Speaking Part 2 (English)
 - **Why it will land:** The single most common Part 2 fear: you speak for 50 seconds, then
@@ -34,7 +34,7 @@ _Generated 2026-11-12. Idea 1 is the recommended pick._
 
 ---
 
-## 2. "Euh…" n'est pas votre problème. Le silence non plus.
+### 2. "Euh…" n'est pas votre problème. Le silence non plus.
 
 - **Exam(s) and language:** DELF B1/B2, TCF, TEF (French) — fully in French
 - **Why it will land:** Learners panic about every "euh" and freeze trying to avoid it, which
@@ -50,7 +50,7 @@ _Generated 2026-11-12. Idea 1 is the recommended pick._
 
 ---
 
-## 3. "Realizar" doesn't mean "realise". It's costing you in DELE.
+### 3. "Realizar" doesn't mean "realise". It's costing you in DELE.
 
 - **Exam(s) and language:** DELE A2–B2 (Spanish), for English speakers
 - **Why it will land:** False friends sound confident and are wrong. Learners often don't know
@@ -63,7 +63,7 @@ _Generated 2026-11-12. Idea 1 is the recommended pick._
 
 ---
 
-## 4. "Weil ich habe…" Your verb is in the wrong place.
+### 4. "Weil ich habe…" Your verb is in the wrong place.
 
 - **Exam(s) and language:** Goethe-Zertifikat A2–B1 (German)
 - **Why it will land:** Learners hear "weil" + main-clause order in everyday speech and copy it.
@@ -76,7 +76,7 @@ _Generated 2026-11-12. Idea 1 is the recommended pick._
 
 ---
 
-## 5. The TOEFL speaking you practised for has changed.
+### 5. The TOEFL speaking you practised for has changed.
 
 - **Exam(s) and language:** TOEFL iBT (English)
 - **Why it will land:** Lots of prep material online still teaches the old speaking section.
