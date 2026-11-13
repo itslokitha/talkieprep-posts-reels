@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Part 2 Structure Carousel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #071019; --card: #0D1B26; --line: #1A2A36; --white: #F2F8F8;
+    --teal: #34D5C3; --coral: #FE8F7B; --yellow: #FFC857; --muted: #8A9BA8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #02070c; font-family: 'Figtree', sans-serif; color: var(--white);
+         display: flex; flex-direction: column; align-items: center; gap: 48px; padding: 48px 0; }
+  .slide { width: 1080px; height: 1350px; background: var(--bg); position: relative; overflow: hidden;
+           padding: 150px 80px 200px; display: flex; flex-direction: column; flex-shrink: 0; }
+  /* chrome */
+  .brand { position: absolute; top: 56px; left: 80px; display: flex; align-items: center; gap: 14px;
+           font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 30px; letter-spacing: -0.5px; }
+  .count { position: absolute; top: 62px; right: 80px; font-size: 24px; font-weight: 600; color: var(--muted); letter-spacing: 2px; }
+  .wave { position: absolute; left: 0; right: 0; bottom: 0; height: 150px; display: flex; align-items: flex-end;
+          gap: 8px; padding: 0 40px 40px; opacity: .55; }
+  .wave i { flex: 1; background: #12232F; border-radius: 4px; }
+  /* type */
+  h1 { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; letter-spacing: -2.5px; line-height: 1.02; }
+  .xl { font-size: 108px; } .lg { font-size: 84px; } .md { font-size: 68px; }
+  .t { color: var(--teal); } .c { color: var(--coral); } .m { color: var(--muted); }
+  .sub { font-size: 34px; line-height: 1.4; color: var(--muted); margin-top: 36px; max-width: 860px; }
+  .label { font-size: 22px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--muted); margin-bottom: 22px; }
+  .chips { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+  .chip { border: 2px solid var(--line); background: var(--card); border-radius: 999px; padding: 12px 26px;
+          font-size: 24px; font-weight: 600; color: var(--white); }
+  .chip.teal { border-color: rgba(52,213,195,.45); color: var(--teal); }
+  .chip.coral { border-color: rgba(254,143,123,.5); color: var(--coral); }
+  .card { background: var(--card); border: 2px solid var(--line); border-radius: 18px; padding: 44px 48px; }
+  .card.light { background: var(--white); color: var(--bg); border: none; }
+  .swipe { position: absolute; right: 80px; bottom: 180px; background: var(--teal); color: var(--bg);
+           font-weight: 700; font-size: 32px; padding: 22px 44px; border-radius: 999px; }
+  .spacer { flex: 1; }
+  .hl { background: rgba(254,143,123,.18); border: 2px solid var(--coral); color: var(--coral);
+        border-radius: 8px; padding: 0 8px; font-weight: 600; }
+  .bar { height: 14px; background: #12232F; border-radius: 999px; overflow: hidden; margin-top: 14px; }
+  .bar span { display: block; height: 100%; border-radius: 999px; }
+  .timerrow { display: flex; justify-content: space-between; font-size: 26px; font-weight: 700; margin-top: 34px; }
+  .note { font-family: 'Caveat', cursive; font-size: 52px; line-height: 1.35; color: #1d2b36; }
+  .strike { text-decoration: line-through; text-decoration-color: var(--coral); text-decoration-thickness: 5px; color: var(--muted); }
+  .stop { display: flex; align-items: center; gap: 28px; background: var(--card); border: 2px solid var(--line);
+          border-radius: 18px; padding: 26px 32px; margin-bottom: 18px; }
+  .num { width: 64px; height: 64px; border-radius: 50%; background: var(--teal); color: var(--bg); flex-shrink: 0;
+         display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque'; font-weight: 800; font-size: 34px; }
+  .stop b { display: block; font-size: 32px; font-weight: 700; }
+  .stop small { display: block; font-size: 26px; color: var(--muted); margin-top: 4px; }
+  .line { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 26px; font-size: 29px; line-height: 1.4; }
+  .line .num { width: 48px; height: 48px; font-size: 24px; margin-top: 2px; }
+</style>
+</head>
+<body>
+
+
+<!-- 1 HOOK -->
+<section class="slide">
+  <div class="brand"><svg width="48" height="48" viewBox="0 0 48 48"><path d="M8 4h32a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H20l-10 8v-8H8a6 6 0 0 1-6-6V10a6 6 0 0 1 6-6z" fill="#34D5C3"/><g fill="#071019"><rect x="13" y="16" width="4" height="10" rx="2"/><rect x="20" y="11" width="4" height="20" rx="2"/><rect x="27" y="14" width="4" height="14" rx="2"/><rect x="34" y="18" width="4" height="6" rx="2"/></g></svg>TalkiePrep</div>
+  <div class="count">1/8</div>
+  <div class="spacer"></div>
+  <div class="chips"><span class="chip teal">IELTS</span><span class="chip">Speaking Part 2</span></div>
+  <h1 class="xl">You didn't run out of ideas.</h1>
+  <h1 class="xl t" style="margin-top:14px">You ran out of structure.</h1>
+  <p class="sub">What I prepared for Part 2 vs what actually came out.</p>
+  <div class="spacer"></div><div class="spacer"></div>
+  <div class="swipe">Swipe →</div>
+  <div class="wave"></div>
+</section>
+
+<!-- 2 CUE CARD -->
+<section class="slide">
+  <div class="brand"><svg width="48" height="48" viewBox="0 0 48 48"><path d="M8 4h32a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H20l-10 8v-8H8a6 6 0 0 1-6-6V10a6 6 0 0 1 6-6z" fill="#34D5C3"/><g fill="#071019"><rect x="13" y="16" width="4" height="10" rx="2"/><rect x="20" y="11" width="4" height="20" rx="2"/><rect x="27" y="14" width="4" height="14" rx="2"/><rect x="34" y="18" width="4" height="6" rx="2"/></g></svg>TalkiePrep</div>
+  <div class="count">2/8</div>
+  <div class="spacer"></div>
+  <div class="label">The cue card</div>
+  <div class="card light" style="padding:56px 60px">
+    <h1 class="md" style="color:#071019;letter-spacing:-2px">Describe a place you like to visit.</h1>
+    <p style="font-size:32px;margin-top:32px;font-weight:600">You should say:</p>
+    <ul style="font-size:32px;line-height:1.6;margin:12px 0 0 40px">
+      <li>where it is</li><li>how often you go there</li><li>what you do there</li>
+    </ul>
+    <p style="font-size:32px;margin-top:8px">and explain why you like it.</p>
+  </div>
+  <div class="chips" style="margin:36px 0 0"><span class="chip">⏱ 1 min to prepare</span><span class="chip">🎙 Speak for 1–2 min</span></div>
+  <p class="sub">One minute of prep. <span style="color:var(--white)">Most people spend it on the wrong thing.</span></p>
+  <div class="spacer"></div>
+  <div class="wave"></div>
+</section>
+
+<!-- 3 WHAT I PREPARED -->
+<section class="slide">
+  <div class="brand"><svg width="48" height="48" viewBox="0 0 48 48"><path d="M8 4h32a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H20l-10 8v-8H8a6 6 0 0 1-6-6V10a6 6 0 0 1 6-6z" fill="#34D5C3"/><g fill="#071019"><rect x="13" y="16" width="4" height="10" rx="2"/><rect x="20" y="11" width="4" height="20" rx="2"/><rect x="27" y="14" width="4" height="14" rx="2"/><rect x="34" y="18" width="4" height="6" rx="2"/></g></svg>TalkiePrep</div>
+  <div class="count">3/8</div>
+  <div class="spacer"></div>
+  <h1 class="lg">What I prepared.</h1>
+  <h1 class="lg c" style="margin-bottom:56px">Full sentences.</h1>
+  <div class="label">My prep notes</div>
+  <div class="card light" style="background:#FAF7EE;transform:rotate(-1.2deg);padding:52px 56px">
+    <p class="note">My favourite place is a beach near my city.</p>
+    <p class="note">I go there often with my family.</p>
+    <p class="note">I like it because it is very relaxing.</p>
+  </div>
+  <div class="chips" style="margin:44px 0 0"><span class="chip coral">60 seconds spent writing 3 sentences</span></div>
+  <div class="spacer"></div>
+  <div class="wave"></div>
+</section>
+
+<!-- 4 WHAT CAME OUT -->
+<section class="slide">
+  <div class="brand"><svg width="48" height="48" viewBox="0 0 48 48"><path d="M8 4h32a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H20l-10 8v-8H8a6 6 0 0 1-6-6V10a6 6 0 0 1 6-6z" fill="#34D5C3"/><g fill="#071019"><rect x="13" y="16" width="4" height="10" rx="2"/><rect x="20" y="11" width="4" height="20" rx="2"/><rect x="27" y="14" width="4" height="14" rx="2"/><rect x="34" y="18" width="4" height="6" rx="2"/></g></svg>TalkiePrep</div>
+  <div class="count">4/8</div>
+  <div class="spacer"></div>
+  <h1 class="lg">What came out.</h1>
+  <h1 class="lg c" style="margin-bottom:56px">0:41, then silence.</h1>
+  <div class="card">
+    <div class="label">Practice transcript</div>
+    <p style="font-size:34px;line-height:1.6">My favourite place is a beach near my city. I go there, <span class="hl">um</span>, often with my family. I like it because it is, <span class="hl">uh</span>, very relaxing. And… <span class="hl">like</span>… yeah.</p>
+    <div style="margin-top:30px"><span class="chip coral" style="display:inline-block">● 4 seconds of silence and counting</span></div>
+    <div class="timerrow"><span class="c">0:41</span><span class="m">2:00</span></div>
+    <div class="bar"><span style="width:34%;background:var(--coral)"></span></div>
+  </div>
+  <div class="spacer"></div>
+  <div class="wave"></div>
+</section>
+
+<!-- 5 THE FIX -->
+<section class="slide">
+  <div class="brand"><svg width="48" height="48" viewBox="0 0 48 48"><path d="M8 4h32a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H20l-10 8v-8H8a6 6 0 0 1-6-6V10a6 6 0 0 1 6-6z" fill="#34D5C3"/><g fill="#071019"><rect x="13" y="16" width="4" height="10" rx="2"/><rect x="20" y="11" width="4" height="20" rx="2"/><rect x="27" y="14" width="4" height="14" rx="2"/><rect x="34" y="18" width="4" height="6" rx="2"/></g></svg>TalkiePrep</div>
+  <div class="count">5/8</div>
+  <div class="spacer"></div>
+  <h1 class="lg">Write stops,</h1>
+  <h1 class="lg t" style="margin-bottom:36px">not sentences.</h1>
+  <p class="strike" style="font-size:32px;margin-bottom:44px">"My favourite place is a beach near my city."</p>
+  <div class="label">A 4-stop route · keywords only</div>
+  <div class="stop"><div class="num">1</div><div><b>Where / when</b><small>beach, 20 min, Sundays</small></div></div>
+  <div class="stop"><div class="num">2</div><div><b>What it looks like</b><small>grey sand, food trucks</small></div></div>
+  <div class="stop"><div class="num">3</div><div><b>One specific moment</b><small>storm, ran to car</small></div></div>
+  <div class="stop"><div class="num">4</div><div><b>Why it matters to you</b><small>only place I switch off</small></div></div>
+  <div class="spacer"></div>
+  <div class="wave"></div>
+</section>
+
+<!-- 6 RERUN -->
+<section class="slide">
+  <div class="brand"><svg width="48" height="48" viewBox="0 0 48 48"><path d="M8 4h32a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H20l-10 8v-8H8a6 6 0 0 1-6-6V10a6 6 0 0 1 6-6z" fill="#34D5C3"/><g fill="#071019"><rect x="13" y="16" width="4" height="10" rx="2"/><rect x="20" y="11" width="4" height="20" rx="2"/><rect x="27" y="14" width="4" height="14" rx="2"/><rect x="34" y="18" width="4" height="6" rx="2"/></g></svg>TalkiePrep</div>
+  <div class="count">6/8</div>
+  <div class="spacer"></div>
+  <h1 class="lg">Same place.</h1>
+  <h1 class="lg t" style="margin-bottom:48px">Still talking at 1:50.</h1>
+  <div class="card">
+    <div class="label">Practice transcript · rerun</div>
+    <div class="line"><div class="num">1</div><p>"It's a beach about twenty minutes from my flat. I go most Sundays…"</p></div>
+    <div class="line"><div class="num">2</div><p>"The sand is grey, not golden, and there are food trucks along the road…"</p></div>
+    <div class="line"><div class="num">3</div><p>"Last spring a storm came in out of nowhere and we ran to the car…"</p></div>
+    <div class="line"><div class="num">4</div><p>"Honestly, it's the only place where I stop checking my phone…"</p></div>
+    <div class="timerrow" style="margin-top:10px"><span class="t">1:50</span><span class="m">2:00</span></div>
+    <div class="bar"><span style="width:92%;background:var(--teal)"></span></div>
+  </div>
+  <div class="spacer"></div>
+  <div class="wave"></div>
+</section>
+
+<!-- 7 TAKEAWAY -->
+<section class="slide">
+  <div class="brand"><svg width="48" height="48" viewBox="0 0 48 48"><path d="M8 4h32a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H20l-10 8v-8H8a6 6 0 0 1-6-6V10a6 6 0 0 1 6-6z" fill="#34D5C3"/><g fill="#071019"><rect x="13" y="16" width="4" height="10" rx="2"/><rect x="20" y="11" width="4" height="20" rx="2"/><rect x="27" y="14" width="4" height="14" rx="2"/><rect x="34" y="18" width="4" height="6" rx="2"/></g></svg>TalkiePrep</div>
+  <div class="count">7/8</div>
+  <div class="spacer"></div>
+  <div class="label">The takeaway</div>
+  <h1 class="xl">Sentences run out.</h1>
+  <h1 class="xl t" style="margin-bottom:56px">Stops don't.</h1>
+  <div class="chips" style="margin-bottom:40px">
+    <span class="chip teal">① Where</span><span class="chip teal">② Looks like</span>
+    <span class="chip teal">③ One moment</span><span class="chip teal">④ Why it matters</span>
+  </div>
+  <p class="sub" style="margin-top:0;color:var(--white)">Keywords only. Four stops. Then talk.</p>
+  <p class="sub" style="margin-top:20px">📌 Save this for your next Part 2.</p>
+  <div class="spacer"></div>
+  <div class="wave"></div>
+</section>
+
+<!-- 8 CTA -->
+<section class="slide" style="align-items:flex-start">
+  <div class="brand"><svg width="48" height="48" viewBox="0 0 48 48"><path d="M8 4h32a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H20l-10 8v-8H8a6 6 0 0 1-6-6V10a6 6 0 0 1 6-6z" fill="#34D5C3"/><g fill="#071019"><rect x="13" y="16" width="4" height="10" rx="2"/><rect x="20" y="11" width="4" height="20" rx="2"/><rect x="27" y="14" width="4" height="14" rx="2"/><rect x="34" y="18" width="4" height="6" rx="2"/></g></svg>TalkiePrep</div>
+  <div class="count">8/8</div>
+  <div class="spacer"></div>
+  <svg width="120" height="120" viewBox="0 0 48 48" style="margin-bottom:48px"><path d="M8 4h32a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H20l-10 8v-8H8a6 6 0 0 1-6-6V10a6 6 0 0 1 6-6z" fill="#34D5C3"/><g fill="#071019"><rect x="13" y="16" width="4" height="10" rx="2"/><rect x="20" y="11" width="4" height="20" rx="2"/><rect x="27" y="14" width="4" height="14" rx="2"/><rect x="34" y="18" width="4" height="6" rx="2"/></g></svg>
+  <h1 class="lg">Try the route out loud.</h1>
+  <h1 class="lg t">Hear it now, not on test day.</h1>
+  <p class="sub">Speak a timed Part 2 with an AI examiner. Leave knowing what to fix.</p>
+  <div style="margin-top:56px;background:var(--teal);color:var(--bg);font-weight:700;font-size:40px;padding:26px 52px;border-radius:999px">talkieprep.com</div>
+  <p style="font-size:24px;color:var(--muted);margin-top:36px">One free session. No credit card. Practice feedback, not an official score.</p>
+  <div class="spacer"></div>
+  <div class="wave"></div>
+</section>
+
+<script>
+  // faint waveform bars across the bottom of every slide
+  document.querySelectorAll('.wave').forEach(function (w, s) {
+    for (var i = 0; i < 64; i++) {
+      var b = document.createElement('i');
+      var h = 18 + Math.abs(Math.sin(i * 0.37 + s) * 60) + Math.abs(Math.sin(i * 1.3 + s * 2) * 30);
+      b.style.height = h + 'px';
+      w.appendChild(b);
+    }
+  });
+</script>
+</body>
+</html>

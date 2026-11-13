@@ -7,6 +7,7 @@
 ## CHOSEN
 <!-- After Day 1 runs, write the number of the idea you want (e.g. 3) before Day 2 runs.
      If you leave this empty, idea 1 is used. -->
+1 (auto-picked)
 
 ## OPTIONS
 <!-- Day 1 fills this in. -->
