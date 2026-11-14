@@ -7,4 +7,4 @@ The cycle repeats: 1 → 2 → 3 → 4 → 1 → ...
 3. REEL
 4. POST (angle B)
 
-NEXT: 3
+NEXT: 4
