@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Part 2 Reel Cover</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #071019; --card: #0D1B26; --line: #1A2A36; --white: #F2F8F8;
+    --teal: #34D5C3; --coral: #FE8F7B; --yellow: #FFC857; --muted: #8A9BA8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #02070c; font-family: 'Figtree', sans-serif; color: var(--white);
+         display: flex; justify-content: center; padding: 48px 0; }
+  .frame { width: 1080px; height: 1920px; background: var(--bg); position: relative; overflow: hidden;
+           padding: 200px 80px 300px; display: flex; flex-direction: column; flex-shrink: 0; }
+  .brand { position: absolute; top: 72px; left: 80px; display: flex; align-items: center; gap: 16px;
+           font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 34px; letter-spacing: -0.5px; }
+  .play { position: absolute; top: 70px; right: 80px; width: 64px; height: 64px; border-radius: 50%;
+          background: rgba(52,213,195,.14); border: 2px solid rgba(52,213,195,.5);
+          display: flex; align-items: center; justify-content: center; }
+  h1 { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; letter-spacing: -3px; line-height: 1.0; font-size: 120px; }
+  .t { color: var(--teal); } .c { color: var(--coral); }
+  .chips { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 52px; }
+  .chip { border: 2px solid var(--line); background: var(--card); border-radius: 999px; padding: 14px 28px;
+          font-size: 26px; font-weight: 600; }
+  .chip.teal { border-color: rgba(52,213,195,.45); color: var(--teal); }
+  .chip.coral { border-color: rgba(254,143,123,.5); color: var(--coral); background: rgba(254,143,123,.08); }
+  .label { font-size: 22px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--muted); }
+  .card { background: var(--card); border: 2px solid var(--line); border-radius: 18px; padding: 44px 48px; }
+  .timer { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 150px; letter-spacing: -4px; line-height: 1; }
+  .timer small { font-size: 56px; color: var(--muted); letter-spacing: -1px; }
+  .bar { height: 16px; background: #12232F; border-radius: 999px; overflow: hidden; margin-top: 28px; }
+  .bar span { display: block; height: 100%; width: 53%; background: var(--coral); border-radius: 999px; }
+  .hl { background: rgba(254,143,123,.18); border: 2px solid var(--coral); color: var(--coral);
+        border-radius: 8px; padding: 0 8px; font-weight: 600; }
+  .row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 26px; }
+  .dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: var(--coral); margin-right: 10px; vertical-align: middle; }
+  .spacer { flex: 1; }
+  .wave { position: absolute; left: 0; right: 0; bottom: 0; height: 220px; display: flex; align-items: flex-end;
+          gap: 9px; padding: 0 40px 60px; opacity: .55; }
+  .wave i { flex: 1; background: #12232F; border-radius: 4px; }
+</style>
+</head>
+<body>
+<section class="frame">
+  <div class="brand"><svg width="54" height="54" viewBox="0 0 48 48"><path d="M8 4h32a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H20l-10 8v-8H8a6 6 0 0 1-6-6V10a6 6 0 0 1 6-6z" fill="#34D5C3"/><g fill="#071019"><rect x="13" y="16" width="4" height="10" rx="2"/><rect x="20" y="11" width="4" height="20" rx="2"/><rect x="27" y="14" width="4" height="14" rx="2"/><rect x="34" y="18" width="4" height="6" rx="2"/></g></svg>TalkiePrep</div>
+  <div class="play"><svg width="24" height="26" viewBox="0 0 24 26"><path d="M3 2l19 11L3 24z" fill="#34D5C3"/></svg></div>
+
+  <div class="spacer"></div>
+  <div class="chips"><span class="chip teal">IELTS</span><span class="chip">Speaking Part 2</span></div>
+  <h1>Nothing left to say at 1:04?</h1>
+  <h1 class="t" style="margin-top:20px">Fix the prep, not the ideas.</h1>
+
+  <div class="card" style="margin-top:80px">
+    <div class="row">
+      <span class="label">Practice transcript · live</span>
+      <span class="chip coral" style="padding:10px 22px;font-size:24px"><span class="dot"></span>4s silence</span>
+    </div>
+    <p style="font-size:34px;line-height:1.55;color:var(--muted)">…I like it because it's, <span class="hl">uh</span>, very relaxing. And… <span class="hl">yeah</span>.</p>
+    <div style="margin-top:40px" class="timer c">1:04 <small>/ 2:00</small></div>
+    <div class="bar"><span></span></div>
+  </div>
+  <div class="spacer"></div>
+  <div class="wave"></div>
+</section>
+<script>
+  // faint waveform bars across the bottom
+  var w = document.querySelector('.wave');
+  for (var i = 0; i < 60; i++) {
+    var b = document.createElement('i');
+    b.style.height = (20 + Math.abs(Math.sin(i * 0.37) * 80) + Math.abs(Math.sin(i * 1.3) * 40)) + 'px';
+    w.appendChild(b);
+  }
+</script>
+</body>
+</html>
