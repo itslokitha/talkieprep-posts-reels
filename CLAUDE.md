@@ -129,30 +129,51 @@ Carousel, 6–8 slides, 1080×1350.
 5. 4–6 hashtags, e.g. #IELTSSpeaking #DELF #DELE #LanguageLearning #SpeakingPractice
    (pick the exam-specific ones that fit).
 
-**Deliverables in the post folder**
-- `slides.html` – one self-contained HTML file showing every slide as a 1080×1350 frame,
-  fully designed in the brand look (fonts from Google Fonts, inline CSS, no external images).
+**Deliverables in the post folder** (no HTML in the folder)
+- `slide-01.png`, `slide-02.png`, … – one PNG per slide, exactly 1080×1350, ready to upload
+  in order.
 - `slides.md` – the plain text of every slide, for quick editing.
 - `caption.md` – the caption with hashtags.
+
+**How to make the PNGs:** design the slides as a source HTML file in `build/YYYY-MM-DD-post/slides.html`
+(`build/` is git-ignored and never committed). Each slide is a `<section class="slide">` of
+1080×1350, in the brand look (fonts from Google Fonts, inline CSS, no external images). Then run
+`node tools/render-post.js build/YYYY-MM-DD-post/slides.html content/YYYY-MM-DD-post`.
+See `tools/README.md`.
 
 ## REEL style (Day 3)
 
 15–30 seconds, 9:16.
 - **Hook (0–2s):** bold on-screen text that poses a challenge or a mistake.
-  e.g. "Same sentence. Twice. Which one scores higher? 🔊 SOUND ON", "Stop saying 'a lot of'",
+  e.g. "Same sentence. Twice. Which one scores higher?", "Stop saying 'a lot of'",
   "The transcript doesn't lie 💀", "Speaking exam simulator. Mic ready?"
 - **Body:** fast beats, one idea per beat (2–4s each). Favour formats that show the product:
-  A vs B audio takes, a TalkiePrep screen recording with live transcript and filler highlights,
+  A vs B answers side by side, an animated TalkiePrep-style screen with live transcript and filler highlights,
   "Stop saying X / say this instead" word swaps, timer running out.
 - **Ending:** payoff + CTA ("Hear it now, not on test day. talkieprep.com"), and a comment
   prompt ("A or B? Comment before you scroll").
 - Series reels get an "EP. 0X" tag; continue numbering from content-log.md.
+- **The MP4 is a finished, animated motion-graphics video, rendered with no voice and a silent
+  audio track.** Music or voiceover gets added in Instagram when posting. So the on-screen text
+  must tell the whole story on its own: every beat readable without sound, big type (headline
+  80px+, body 36px+), and each beat on screen long enough to read (about 2–4s).
+  Product moments (live transcript, filler highlights, timer) are shown as animated mock-ups of
+  the TalkiePrep screen in the brand look, labelled "Practice transcript" and never showing an
+  official-looking score.
 
-**Deliverables in the reel folder**
-- `script.md` – a table of beats: time, on-screen text, voiceover/audio, what's on screen
-  (shot or screen recording), plus music mood and a cover-frame headline.
-- `cover.html` – the reel cover as a 1080×1920 frame in the brand look.
+**Deliverables in the reel folder** (no HTML in the folder)
+- `reel.mp4` – the finished reel: 1080×1920, 30 fps, H.264, 15–30 seconds.
+- `cover.png` – the reel cover as a 1080×1920 PNG in the brand look.
+- `script.md` – a table of beats: time, on-screen text, what's on screen (animation), and
+  suggested audio/voiceover to add in Instagram, plus music mood and the cover headline.
 - `caption.md` – caption in the same structure as posts.
+
+**How to make the MP4 and cover:** build one source HTML file in `build/YYYY-MM-DD-reel/reel.html`
+(git-ignored) with a `<section id="cover">` frame and a `<section id="stage">` frame holding
+timed `.beat` blocks (`data-start`/`data-end` in seconds, plus `data-in`, `data-type`,
+`data-timer`, `data-bar` for animation). Then run
+`node tools/render-reel.js build/YYYY-MM-DD-reel/reel.html content/YYYY-MM-DD-reel`.
+The full markup reference is in `tools/README.md`.
 
 ---
 

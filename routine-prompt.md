@@ -19,6 +19,19 @@ You are running TalkiePrep's daily content routine. Follow CLAUDE.md for voice, 
    - Day 3: create the reel in /content/YYYY-MM-DD-reel/ using the Day 3 angle.
    - Day 4: create the post in /content/YYYY-MM-DD-post/ using the Day 4 angle, in a different
      format from the Day 2 post (check its folder).
+   - Render the visuals (see CLAUDE.md and tools/README.md). Write the source HTML in
+     build/ (git-ignored), never in /content:
+     - Posts: `node tools/render-post.js build/YYYY-MM-DD-post/slides.html content/YYYY-MM-DD-post`
+       → slide-01.png, slide-02.png, … (1080×1350).
+     - Reel: `node tools/render-reel.js build/YYYY-MM-DD-reel/reel.html content/YYYY-MM-DD-reel`
+       → reel.mp4 (1080×1920, 30 fps) + cover.png.
+   - Check the output before committing: the script must finish without "RENDER FAILED" and
+     with 0 layout warnings (fix the HTML and re-render if not). Look at the PNGs, and for the
+     reel look at a few frames pulled from reel.mp4 with ffmpeg. Fix anything clipped, overlapping
+     or unreadable.
+   - If rendering fails and you can't fix it (e.g. fonts can't load), still commit the text files,
+     and send a notification saying which file is missing and why.
+   - The content folder must contain no .html files.
    - After the Day 4 post, reset next-idea.md to its empty template (keep the section headings
      and comments) so the next cycle starts clean.
 
