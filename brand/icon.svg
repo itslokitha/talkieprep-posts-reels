@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none">
+  <defs>
+    <linearGradient id="fav-grad" x1="4" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0F766E" />
+      <stop offset="60%" stop-color="#2DD4BF" />
+      <stop offset="100%" stop-color="#E85D4C" />
+    </linearGradient>
+  </defs>
+
+  <!-- Speech loop -->
+  <path d="M16 4C9.373 4 4 9.149 4 15.5C4 18.153 4.942 20.591 6.533 22.527L5.022 26.489C4.844 26.951 5.289 27.396 5.751 27.218L10.222 25.422C11.933 26.462 13.893 27.111 16 27.111C22.627 27.111 28 21.962 28 15.5C28 9.149 22.627 4 16 4Z" stroke="url(#fav-grad)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Sparkle -->
+  <path d="M23.5 5C23.5 6.47 24.69 7.67 26.17 7.67C24.69 7.67 23.5 8.86 23.5 10.33C23.5 8.86 22.31 7.67 20.83 7.67C22.31 7.67 23.5 6.47 23.5 5Z" fill="#E85D4C" />
+
+  <!-- Wave bars -->
+  <rect x="10" y="12.5" width="2" height="6" rx="1" fill="#0F766E" />
+  <rect x="14.5" y="9.5" width="2.2" height="12" rx="1.1" fill="#2DD4BF" />
+  <rect x="19" y="11.5" width="2" height="8" rx="1" fill="#E85D4C" />
+</svg>

@@ -32,7 +32,7 @@ A 30-second reel takes about 1–2 minutes to render.
 
 <section id="stage" class="frame">
   <!-- anything directly inside #stage (not in a .beat) stays on screen the whole video -->
-  <div class="brand">…logo…</div>
+  <div class="brand"><!-- paste brand/logo-dark.svg here (inline, unchanged except width/height) --></div>
   <div class="ep">EP. 02</div>
 
   <div class="beat" data-start="0" data-end="2.4"> … beat 1 … </div>

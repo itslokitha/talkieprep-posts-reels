@@ -25,6 +25,9 @@ You are running TalkiePrep's daily content routine. Follow CLAUDE.md for voice, 
        → slide-01.png, slide-02.png, … (1080×1350).
      - Reel: `node tools/render-reel.js build/YYYY-MM-DD-reel/reel.html content/YYYY-MM-DD-reel`
        → reel.mp4 (1080×1920, 30 fps) + cover.png.
+   - Logo: use the official TalkiePrep logo from `brand/` (`logo-dark.svg` on dark backgrounds,
+     `logo-light.svg` on light ones), pasted inline as SVG, unchanged except for size. Never draw
+     your own logo or retype the wordmark. Covers and CTA slides must show it too.
    - Check the output before committing: the script must finish without "RENDER FAILED" and
      with 0 layout warnings (fix the HTML and re-render if not). Look at the PNGs, and for the
      reel look at a few frames pulled from reel.mp4 with ffmpeg. Fix anything clipped, overlapping

@@ -68,7 +68,15 @@ or coral (for the problem or mistake).
 e.g. "Mind went blank? / **Say this instead.**" · "3 things here are / **costing points.**"
 
 **Recurring elements**
-- TalkiePrep logo (teal speech bubble with sound bars) + "TalkiePrep" wordmark, top-left.
+- **The official TalkiePrep logo, top-left, always.** Use the real logo from www.talkieprep.com,
+  saved in `brand/` — never redraw, recolour, restyle or approximate it (no hand-made speech
+  bubbles, no retyped wordmark):
+  - `brand/logo-dark.svg` – for dark backgrounds (the default navy-black slides and reels).
+  - `brand/logo-light.svg` – for light backgrounds (cream editorial posts, off-white panels).
+  - `brand/icon.svg` – the icon on its own, only where the full logo doesn't fit.
+  Paste the SVG markup inline into the source HTML (copy the file contents exactly; you may only
+  change its `width`/`height` attributes to resize it, keeping the 280:64 ratio). About 64–80px
+  tall on posts, 80–96px on reels.
 - Slide counter "1/8" top-right on carousels.
 - Faint audio-waveform bars across the bottom of the slide (dark, low contrast).
 - Teal pill button "Swipe →" bottom-right on carousel slide 1.
@@ -116,7 +124,7 @@ Carousel, 6–8 slides, 1080×1350.
 - **Middle slides:** one point per slide, shown with a visual element (card, transcript,
   strikethrough, A vs B, chips), not paragraphs. Max ~25 words of body text per slide.
 - **Second-last slide:** the takeaway or summary.
-- **Last slide:** CTA, e.g. "Hear it now, not on test day." + talkieprep.com + logo.
+- **Last slide:** CTA, e.g. "Hear it now, not on test day." + talkieprep.com + the official logo (larger, from `brand/`).
 - Use a recognisable format from the feed: myth-bust list, "Stop saying X" upgrades,
   A vs B "which scores higher", transcript teardown, "red pen" marked answer, 7-day plan,
   "What I prepared vs what came out", phrases for when your mind goes blank.
@@ -137,7 +145,8 @@ Carousel, 6–8 slides, 1080×1350.
 
 **How to make the PNGs:** design the slides as a source HTML file in `build/YYYY-MM-DD-post/slides.html`
 (`build/` is git-ignored and never committed). Each slide is a `<section class="slide">` of
-1080×1350, in the brand look (fonts from Google Fonts, inline CSS, no external images). Then run
+1080×1350, in the brand look (fonts from Google Fonts, inline CSS, no external images; the logo is the
+inline SVG from `brand/`, see "Recurring elements"). Then run
 `node tools/render-post.js build/YYYY-MM-DD-post/slides.html content/YYYY-MM-DD-post`.
 See `tools/README.md`.
 
