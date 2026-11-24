@@ -9,3 +9,4 @@
 | 2026-11-18 | IDEAS | Developed MY IDEA: Your interview questions are already written. They're in the job ad. (TalkiePrep Interview, interview.talkieprep.com) | content/2026-11-18-ideas/ |
 | 2026-11-19 | POST (angle A) | Your interview questions are already written. They're in the job ad. (TalkiePrep Interview) — job-ad teardown carousel | content/2026-11-19-post/ |
 | 2026-11-22 | REEL (EP. 02) | Your interview questions are already written. They're in the job ad. (TalkiePrep Interview) — "They're going to ask about this line." product mock-up reel | content/2026-11-22-reel/ |
+| 2026-11-24 | POST (angle B) | Your interview questions are already written. They're in the job ad. (TalkiePrep Interview) — A vs B "Which one gets the job?" behavioural answer carousel | content/2026-11-24-post/ |
