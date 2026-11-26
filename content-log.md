@@ -11,3 +11,4 @@
 | 2026-11-22 | REEL (EP. 02) | Your interview questions are already written. They're in the job ad. (TalkiePrep Interview) — "They're going to ask about this line." product mock-up reel | content/2026-11-22-reel/ |
 | 2026-11-24 | POST (angle B) | Your interview questions are already written. They're in the job ad. (TalkiePrep Interview) — A vs B "Which one gets the job?" behavioural answer carousel | content/2026-11-24-post/ |
 | 2026-11-25 | IDEAS | 5 options; recommended: « Je suis d'accord. » Et après ? (TCF/TEF Canada, in French) | content/2026-11-25-ideas/ |
+| 2026-11-26 | POST (angle A) | « Je suis d'accord. » Et après ? (TCF/TEF Canada, in French) — transcript teardown carousel | content/2026-11-26-post/ |
